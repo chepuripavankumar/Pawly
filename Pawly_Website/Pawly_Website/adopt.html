@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adopt a Dog or Cat | Pawly</title>
+  <meta name="description" content="Search adoptable dogs and cats by state, age, gender, size and breed." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="adopt">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / Pet Adoption</div>
+        <h1 id="adoptTitle">Adopt a Pet</h1>
+        <p>Every pet here is waiting at one of our partner shelters and rescues. Filter by what matters to your family, then apply online in minutes.</p>
+      </div>
+    </div>
+
+    <div class="container listing">
+      <aside class="sidebar" id="filters" aria-label="Filters">
+        <h4>Filters <button class="link-btn" id="resetFilters" type="button">Reset</button></h4>
+
+        <div class="group">
+          <div class="group-title">Pet type</div>
+          <div class="chips" id="typeChips">
+            <button type="button" class="chip" data-type="">All</button>
+            <button type="button" class="chip" data-type="dog">🐶 Dogs</button>
+            <button type="button" class="chip" data-type="cat">🐱 Cats</button>
+          </div>
+        </div>
+
+        <label class="field"><span>State</span><select id="fState"><option value="">Any state</option></select></label>
+        <label class="field"><span>Shelter</span><select id="fShelter"><option value="">Any shelter</option></select></label>
+        <label class="field"><span>Breed</span><select id="fBreed"><option value="">Any breed</option></select></label>
+        <label class="field"><span>Gender</span><select id="fGender"><option value="">Any</option><option>Male</option><option>Female</option></select></label>
+
+        <div class="group">
+          <div class="group-title">Age</div>
+          <div id="fAge">
+            <label class="check"><input type="checkbox" value="Baby"> Baby</label>
+            <label class="check"><input type="checkbox" value="Young"> Young</label>
+            <label class="check"><input type="checkbox" value="Adult"> Adult</label>
+            <label class="check"><input type="checkbox" value="Senior"> Senior</label>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group-title">Size</div>
+          <div id="fSize">
+            <label class="check"><input type="checkbox" value="Small"> Small</label>
+            <label class="check"><input type="checkbox" value="Medium"> Medium</label>
+            <label class="check"><input type="checkbox" value="Large"> Large</label>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group-title">Good with</div>
+          <div id="fTraits">
+            <label class="check"><input type="checkbox" value="0"> Kids</label>
+            <label class="check"><input type="checkbox" value="1"> Dogs</label>
+            <label class="check"><input type="checkbox" value="2"> Cats</label>
+            <label class="check"><input type="checkbox" value="3"> Already house-trained</label>
+          </div>
+        </div>
+      </aside>
+
+      <div class="results">
+        <div class="results-bar">
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn ghost sm filter-toggle" id="filterToggle" type="button" aria-controls="filters" aria-expanded="false">☰ Filters</button>
+            <span class="count" id="count">0 pets</span>
+          </div>
+          <div class="right">
+            <label class="search-input"><span class="sr-only">Search by name or breed</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <input class="input" id="fSearch" type="search" placeholder="Search name or breed">
+            </label>
+            <select class="input" id="fSort" style="width:auto" aria-label="Sort">
+              <option value="new">Newest</option>
+              <option value="name">Name A–Z</option>
+              <option value="fee">Lowest adoption fee</option>
+            </select>
+          </div>
+        </div>
+        <div class="cards" id="grid"></div>
+      </div>
+    </div>
+
+    <!-- Shelters & rescues -->
+    <section id="shelters" class="band-sage">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Shelters & Rescues</div>
+            <h2 class="section-title">Our partner organizations</h2>
+            <p class="section-sub">Pawly connects adopters with local shelters and rescues. Each organization reviews its own applications and completes the adoption.</p>
+          </div>
+        </div>
+        <div class="shelter-grid" id="shelterGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/adopt.js"></script>
+</body>
+</html>

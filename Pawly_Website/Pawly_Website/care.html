@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Care Guides | Pawly</title>
+  <meta name="description" content="Guides on adoption, training, nutrition, travel and everyday pet care." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="care">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / Pet Care</div>
+        <h1>Pet Care Guides</h1>
+        <p>Practical, vet-informed advice on adoption, training, nutrition, travel and everyday care — written for real pet parents.</p>
+        <div class="chips" id="catChips" style="margin-top:20px"></div>
+      </div>
+    </div>
+
+    <section style="padding-top:34px">
+      <div class="container">
+        <div id="featured"></div>
+        <div class="guide-grid" id="grid" style="margin-top:22px"></div>
+      </div>
+    </section>
+
+    <section class="band-sage">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">Quick checklist</div><h2 class="section-title">Healthy pet basics</h2></div></div>
+        <div class="values">
+          <div class="value"><div class="ico">🩺</div><h4>Yearly checkups</h4><p>An annual wellness exam (twice a year for seniors) catches problems early.</p></div>
+          <div class="value"><div class="ico">💉</div><h4>Vaccines on time</h4><p>Follow your vet's schedule for core and lifestyle vaccines. <a href="services.html?type=vaccination#schedule" style="color:var(--green-dark);font-weight:700">See schedule</a></p></div>
+          <div class="value"><div class="ico">🦷</div><h4>Dental care</h4><p>Brush a few times a week and use dental chews to prevent gum disease.</p></div>
+          <div class="value"><div class="ico">🐛</div><h4>Parasite prevention</h4><p>Monthly flea, tick and heartworm prevention protects pets year-round.</p></div>
+          <div class="value"><div class="ico">🏷️</div><h4>ID & microchip</h4><p>Keep tags and microchip details current. A GPS belt adds real-time peace of mind.</p></div>
+          <div class="value"><div class="ico">⚖️</div><h4>Healthy weight</h4><p>Measure meals and adjust for activity — you should feel ribs without seeing them.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      let cat = "";
+      $("#catChips").innerHTML = `<button class="chip active" data-cat="">All topics</button>` +
+        GUIDE_CATEGORIES.map(c => `<button class="chip" data-cat="${c}">${c}</button>`).join("");
+
+      function render() {
+        $$("#catChips .chip").forEach(c => c.classList.toggle("active", c.dataset.cat === cat));
+        const list = GUIDES.filter(g => !cat || g.cat === cat);
+        const [first, ...rest] = list;
+        $("#featured").innerHTML = first ? `
+          <button class="card featured-guide" data-open-guide="${first.id}">
+            <img src="${img(first.img, 1200)}" alt="">
+            <div class="body">
+              <div class="guide-type">Featured · ${esc(first.cat)}</div>
+              <h3 class="serif" style="font-size:30px;margin:6px 0">${esc(first.title)}</h3>
+              <p class="muted" style="margin:0">${esc(first.summary)}</p>
+              <span class="link-btn" style="margin-top:10px">Read the guide →</span>
+            </div>
+          </button>` : "";
+        $("#grid").innerHTML = rest.map(guideCard).join("");
+      }
+
+      $("#catChips").addEventListener("click", e => { const c = e.target.closest(".chip"); if (c) { cat = c.dataset.cat; render(); } });
+      render();
+
+      // Deep links like care.html#first-five-commands open the article
+      const fromHash = () => { const id = location.hash.slice(1); if (findGuide(id)) openGuide(id); };
+      fromHash();
+      window.addEventListener("hashchange", fromHash);
+    })();
+  </script>
+</body>
+</html>

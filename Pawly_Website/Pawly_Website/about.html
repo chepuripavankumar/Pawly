@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About & Contact | Pawly</title>
+  <meta name="description" content="Pawly brings pet adoption, shopping and pet-care services together in one place." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="about">
+  <main>
+    <section class="hero" style="padding-bottom:50px">
+      <div class="container split">
+        <div>
+          <div class="eyebrow">🐾 About Pawly</div>
+          <h1 style="font-size:clamp(40px,5.4vw,64px)">One home for <span>everything pets.</span></h1>
+          <p class="lead">Pet owners juggle separate websites for adoption, food, supplies, grooming, daycare and vet visits. Pawly brings them together in one simple platform — and helps local shelters and pet businesses reach the people who need them.</p>
+          <div class="modal-actions"><a class="btn" href="adopt.html">Meet adoptable pets</a><a class="btn ghost" href="#contact">Contact us</a></div>
+        </div>
+        <div class="visual"><img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?auto=format&fit=crop&w=1200&q=85" alt="A couple relaxing at home with their dog"></div>
+      </div>
+    </section>
+
+    <section class="band-sage">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">What we do</div><h2 class="section-title">Built for pet owners and pet businesses</h2></div></div>
+        <div class="values">
+          <div class="value"><div class="ico">🏡</div><h4>Adoption first</h4><p>Search adoptable dogs and cats from partner shelters and rescues, and apply online.</p></div>
+          <div class="value"><div class="ico">🛍️</div><h4>A real marketplace</h4><p>Food, bowls &amp; feeders, toys, beds, collars and GPS dog belts — with subscriptions for the things you buy every month.</p></div>
+          <div class="value"><div class="ico">📅</div><h4>Services on demand</h4><p>Book vaccination, vet care, grooming, daycare and training, done at your home or at a vetted partner's location. Pawly runs no locations of its own.</p></div>
+          <div class="value"><div class="ico">📚</div><h4>Trusted guidance</h4><p>Practical guides on training, nutrition, travel and everyday care.</p></div>
+          <div class="value"><div class="ico">🤝</div><h4>Two-sided platform</h4><p>Sellers and service providers list on Pawly and grow with commission-based plans.</p></div>
+          <div class="value"><div class="ico">💚</div><h4>Animals before profit</h4><p>No live-animal sales, ever. Adoptions come only from registered shelters and rescues.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container two-col">
+        <div class="panel">
+          <h3 class="serif" style="font-size:30px;margin-bottom:4px">Contact us</h3>
+          <p class="muted" style="margin-top:0">Questions about an order, a booking, an adoption or listing your business? Send us a message and we'll reply within one business day.</p>
+          <form id="contactForm" class="form-grid" novalidate>
+            <label class="field"><span>Name</span><input name="name" required autocomplete="name"></label>
+            <label class="field"><span>Email</span><input name="email" type="email" required autocomplete="email"></label>
+            <label class="field full"><span>Topic</span><select name="topic"><option>Adoption</option><option>Order or subscription</option><option>Service booking</option><option>Selling on Pawly</option><option>Something else</option></select></label>
+            <label class="field full"><span>Message</span><textarea name="message" required></textarea></label>
+            <div class="error-text full" id="contactErr"></div>
+            <div class="full"><button class="btn" type="submit">Send message</button></div>
+          </form>
+        </div>
+        <div>
+          <div class="panel" style="margin-bottom:16px">
+            <h3>Other ways to reach us</h3>
+            <p style="margin:0 0 6px">📧 <b>support@pawly.example</b></p>
+            <p style="margin:0 0 6px">🕘 Mon–Fri, 9am–6pm</p>
+            <p class="muted" style="margin:0;font-size:14px">For a pet medical emergency, please contact your veterinarian or nearest emergency animal hospital right away.</p>
+          </div>
+          <details class="faq"><summary>Does Pawly sell pets?</summary><p>No. Pawly never sells animals. Adoptable pets are listed by partner shelters and rescues, who review applications and complete adoptions.</p></details>
+          <details class="faq"><summary>How do food subscriptions work?</summary><p>Choose "Subscribe & save" on any food product to get 10% off and automatic delivery every 2, 4 or 6 weeks. Skip or cancel anytime.</p></details>
+          <details class="faq"><summary>How do I cancel an appointment?</summary><p>Go to <a href="favorites.html#bookings" style="text-decoration:underline">My Favorites & Bookings</a>. Cancellations are free up to 24 hours before the appointment.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    $("#contactForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const f = e.target, err = $("#contactErr");
+      if (!f.name.value.trim()) return (err.textContent = "Please enter your name.");
+      if (!isEmail(f.email.value)) return (err.textContent = "Please enter a valid email address.");
+      if (!f.message.value.trim()) return (err.textContent = "Please write a message.");
+      err.textContent = "";
+      f.reset();
+      toast("Thanks! Your message has been sent. 🐾");
+    });
+  </script>
+</body>
+</html>

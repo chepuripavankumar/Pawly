@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Marketplace | Pawly</title>
+  <meta name="description" content="Shop dog and cat food, toys, beds, collars and GPS dog belts." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="shop">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / <a href="shop.html">Shop</a><span id="crumbCat"></span></div>
+        <h1 id="shopTitle">Pet Marketplace</h1>
+        <p id="shopSub">Food, toys, beds, collars and GPS dog belts from trusted brands and independent sellers. Free shipping on orders over $49.</p>
+        <div class="chips" id="catChips" style="margin-top:20px"></div>
+      </div>
+    </div>
+
+    <div class="container listing">
+      <aside class="sidebar" id="filters" aria-label="Filters">
+        <h4>Filters <button class="link-btn" id="resetFilters" type="button">Reset</button></h4>
+        <div class="group">
+          <div class="group-title">Shop for</div>
+          <div class="chips" id="petChips">
+            <button type="button" class="chip" data-pet="">All</button>
+            <button type="button" class="chip" data-pet="dog">🐶 Dog</button>
+            <button type="button" class="chip" data-pet="cat">🐱 Cat</button>
+          </div>
+        </div>
+        <div class="group" id="foodTypeGroup">
+          <div class="group-title">Food type</div>
+          <div id="fFoodType">
+            <label class="check"><input type="checkbox" value="Dry"> Dry food</label>
+            <label class="check"><input type="checkbox" value="Wet"> Wet food</label>
+            <label class="check"><input type="checkbox" value="Treats"> Treats</label>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group-title">Age group</div>
+          <div id="fLife">
+            <label class="check"><input type="checkbox" value="Puppy/Kitten"> Puppy / kitten</label>
+            <label class="check"><input type="checkbox" value="Adult"> Adult</label>
+            <label class="check"><input type="checkbox" value="Senior"> Senior</label>
+            <label class="check"><input type="checkbox" value="All ages"> All ages</label>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group-title">Brand</div>
+          <div id="fBrand"></div>
+        </div>
+        <div class="group">
+          <div class="group-title">Max price: <span id="priceLabel">$150</span></div>
+          <input type="range" id="fPrice" min="5" max="150" step="5" value="150" style="accent-color:var(--green)" aria-label="Maximum price">
+        </div>
+        <label class="check"><input type="checkbox" id="fSale"> On sale only</label>
+      </aside>
+
+      <div class="results">
+        <div id="catBanner"></div>
+        <div class="results-bar">
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn ghost sm filter-toggle" id="filterToggle" type="button" aria-controls="filters" aria-expanded="false">☰ Filters</button>
+            <span class="count" id="count">0 products</span>
+          </div>
+          <div class="right">
+            <label class="search-input"><span class="sr-only">Search products</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <input class="input" id="fSearch" type="search" placeholder="Search products">
+            </label>
+            <select class="input" id="fSort" style="width:auto" aria-label="Sort">
+              <option value="featured">Featured</option>
+              <option value="low">Price: low to high</option>
+              <option value="high">Price: high to low</option>
+              <option value="rating">Top rated</option>
+            </select>
+          </div>
+        </div>
+        <div class="cards" id="grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dog & Cat Breed Guide | Pawly</title>
+  <meta name="description" content="Explore dog and cat breeds — size, energy, grooming, lifespan and temperament — and find adoptable pets of each breed." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="adopt">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / <a href="adopt.html">Adopt</a> / Breed Guide</div>
+        <h1 id="breedTitle">Discover Your Pawly</h1>
+        <p>Explore dog and cat breeds — size, energy, grooming and temperament — to find the right match for your home. Then meet adoptable pets of that breed.</p>
+        <div class="chips" id="typeChips" style="margin-top:20px">
+          <button type="button" class="chip" data-type="">All breeds</button>
+          <button type="button" class="chip" data-type="dog">🐶 Dog breeds</button>
+          <button type="button" class="chip" data-type="cat">🐱 Cat breeds</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding:30px 0 70px">
+      <div class="results-bar">
+        <span class="count" id="count">0 breeds</span>
+        <div class="right">
+          <select class="input" id="fSize" style="width:auto" aria-label="Size">
+            <option value="">Any size</option><option>Small</option><option>Medium</option><option>Large</option>
+          </select>
+          <select class="input" id="fGood" style="width:auto" aria-label="Good for">
+            <option value="">Good for anyone</option>
+            <option value="apartment">Apartment living</option>
+            <option value="kids">Families with kids</option>
+            <option value="active">Active owners</option>
+            <option value="lowshed">Low shedding</option>
+            <option value="easygroom">Easy grooming</option>
+          </select>
+          <label class="search-input"><span class="sr-only">Search breeds</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input class="input" id="fSearch" type="search" placeholder="Search breeds">
+          </label>
+        </div>
+      </div>
+      <div class="cards" id="grid"></div>
+      <p class="form-note" style="margin-top:18px">Breed traits are general guides. Every pet is an individual — mixed breeds often combine the best of both, and shelter staff can tell you about each pet's real personality.</p>
+    </div>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/breeds.js"></script>
+</body>
+</html>

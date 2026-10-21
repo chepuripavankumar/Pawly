@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Services — Vaccination, Vet Care, Grooming, Daycare & Training | Pawly</title>
+  <meta name="description" content="Find and book vaccination, veterinary care, grooming, dog & cat daycare and training near you." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="services">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / <a href="services.html">Services</a><span id="crumbType"></span></div>
+        <h1 id="svcTitle">Pet Services</h1>
+        <p id="svcSub">Compare trusted local providers, see prices up front and request an appointment in under a minute.</p>
+        <div class="chips" id="typeChips" style="margin-top:20px"></div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:30px">
+      <div class="results-bar">
+        <span class="count" id="count">0 providers</span>
+        <div class="right">
+          <select class="input" id="fState" style="width:auto" aria-label="State"><option value="">All states</option></select>
+          <select class="input" id="fMode" style="width:auto" aria-label="Where the service happens">
+            <option value="">Home or location</option><option value="home">🚐 Comes to my home</option><option value="center">📍 At the provider</option>
+          </select>
+          <select class="input" id="fPets" style="width:auto" aria-label="Pets accepted">
+            <option value="">Dogs & cats</option><option value="dog">Accepts dogs</option><option value="cat">Accepts cats</option>
+          </select>
+          <label class="search-input"><span class="sr-only">Search providers</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input class="input" id="fSearch" type="search" placeholder="Search providers">
+          </label>
+          <select class="input" id="fSort" style="width:auto" aria-label="Sort">
+            <option value="rating">Top rated</option><option value="price">Lowest price</option><option value="reviews">Most reviewed</option>
+          </select>
+        </div>
+      </div>
+      <div class="cards three" id="grid"></div>
+    </div>
+
+    <!-- Service model: how a booking is actually carried out -->
+    <section id="how-we-work">
+      <div class="container">
+        <div class="section-head"><div>
+          <div class="section-kicker">Our service model</div>
+          <h2 class="section-title">How Pawly services work</h2>
+          <p class="section-sub">Pawly is an online-first startup. We don't own salons, clinics or vans. You book on Pawly, and a vetted local partner business does the job, either at your home or at their place.</p>
+        </div></div>
+        <div class="model-grid">
+          <div class="value"><div class="ico">🚐</div><h4>1. We come to you</h4>
+            <p>Mobile grooming vans, house-call vets, in-home pet sitters and trainers come to your address. Look for the <b>Comes to your home</b> tag and enter your address when you book.</p>
+            <button type="button" class="btn sm" data-mode-filter="home">Show at-home services</button></div>
+          <div class="value"><div class="ico">📍</div><h4>2. You visit the provider</h4>
+            <p>Grooming salons, vet and vaccine clinics, daycare centers and boarding hotels. You drop your pet off at the partner's location at the time you booked.</p>
+            <button type="button" class="btn sm ghost" data-mode-filter="center">Show provider locations</button></div>
+          <div class="value"><div class="ico">🤝</div><h4>3. Done by partner businesses</h4>
+            <p>Every job is carried out by a licensed, insured partner that has passed our review. You book and pay on Pawly. The partner is paid weekly, and Pawly keeps a 6 to 10% commission per booking.</p>
+            <a class="btn sm ghost" href="sell.html#list">Become a partner</a></div>
+        </div>
+
+        <h3 style="margin:34px 0 12px">Which option each service offers</h3>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Service</th><th>🚐 At your home</th><th>📍 At the provider's location</th></tr></thead>
+            <tbody>
+              <tr><td><b>Grooming</b></td><td>Mobile grooming van parks in your driveway</td><td>Grooming salon or cat-only studio</td></tr>
+              <tr><td><b>Dog &amp; cat daycare</b></td><td>In-home pet sitter: drop-in visits, full days or overnight house-sitting</td><td>Daycare center for supervised play, and overnight boarding</td></tr>
+              <tr><td><b>Vaccination</b></td><td>House-call vet</td><td>Vet clinic or low-cost vaccine clinic</td></tr>
+              <tr><td><b>Veterinary care</b></td><td class="muted">Not offered. Exams, dental care and emergencies need clinic equipment.</td><td>Animal hospital or vet clinic</td></tr>
+              <tr><td><b>Training</b></td><td>In-home trainer for private lessons and behavior help</td><td>Training center and group classes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="form-note" style="margin-top:12px">Why no Pawly-owned locations? Partners already have the licenses, staff and equipment, so Pawly can open in a new city by signing up local businesses instead of renting a building.</p>
+      </div>
+    </section>
+
+    <!-- Vaccination information -->
+    <section id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Vaccination guide</div>
+            <h2 class="section-title">Puppy & kitten vaccine schedule</h2>
+            <p class="section-sub">A general timeline based on common veterinary guidelines. Your vet will tailor it to your pet's age, health, lifestyle and local laws.</p>
+          </div>
+          <div class="chips" id="schedChips">
+            <button type="button" class="chip active" data-sched="dog">🐶 Dogs</button>
+            <button type="button" class="chip" data-sched="cat">🐱 Cats</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Age</th><th>Core vaccines</th><th>Also consider</th></tr></thead>
+            <tbody id="schedBody"></tbody>
+          </table>
+        </div>
+        <p class="form-note" style="margin-top:12px">This information is educational and is not a substitute for advice from a licensed veterinarian.</p>
+      </div>
+    </section>
+
+    <!-- How booking works -->
+    <section class="band-sage">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">How it works</div><h2 class="section-title">Booking on Pawly</h2></div></div>
+        <div class="steps">
+          <div class="step"><h4>Compare</h4><p>Filter by service, location and pet type. Prices and reviews are shown up front.</p></div>
+          <div class="step"><h4>Request</h4><p>Pick a service, date and time, and choose whether the provider comes to your home or you visit them.</p></div>
+          <div class="step"><h4>Confirm</h4><p>The partner business confirms by email. Your booking appears in My Favorites & Bookings.</p></div>
+          <div class="step"><h4>Relax</h4><p>Pay through Pawly after the service, then leave a review. Cancel free up to 24 hours before.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/services.js"></script>
+</body>
+</html>

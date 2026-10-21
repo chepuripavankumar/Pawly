@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawly | Adopt, Shop & Book Pet Services</title>
+  <meta name="description" content="Adopt dogs and cats, shop pet food, toys and GPS dog belts, and book vet care, grooming, daycare, training and vaccination — all in one place." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="home">
+  <main>
+    <!-- Hero + adoption search -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">❤️ Find your new best friend</div>
+          <h1>Take your <span>furry friend</span> home.</h1>
+          <p class="lead">Search adoptable pets, shop food and supplies, and book trusted vet care, grooming, daycare and training — everything your pet needs, in one place.</p>
+
+          <form class="search-card" id="heroSearch">
+            <div class="tabs" role="tablist">
+              <button type="button" class="tab active" data-pet="dog" role="tab" aria-selected="true">Dogs & Puppies</button>
+              <button type="button" class="tab" data-pet="cat" role="tab" aria-selected="false">Cats & Kittens</button>
+            </div>
+            <div class="filters">
+              <label class="field"><span>State</span>
+                <select id="state"><option value="">Any</option></select>
+              </label>
+              <label class="field"><span>Age</span>
+                <select id="age"><option value="">Any</option><option>Baby</option><option>Young</option><option>Adult</option><option>Senior</option></select>
+              </label>
+              <label class="field"><span>Gender</span>
+                <select id="gender"><option value="">Any</option><option>Male</option><option>Female</option></select>
+              </label>
+              <button class="btn" type="submit" style="align-self:end">Search</button>
+            </div>
+          </form>
+
+          <div class="hero-stats">
+            <div><b id="statPets">33</b><span>pets looking for homes</span></div>
+            <div><b id="statProducts">28</b><span>products in the shop</span></div>
+            <div><b id="statProviders">18</b><span>vets, groomers, daycares & trainers</span></div>
+          </div>
+        </div>
+
+        <div class="hero-art" role="img" aria-label="Golden retriever holding a flower">
+          <div class="hero-badge">
+            <strong>Every pet deserves a loving home.</strong>
+            <span>Adopt, shop and book care — all on Pawly.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Every feature, one tap away -->
+    <section style="padding-top:40px">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Explore</div>
+            <h2 class="section-title">Everything your pet needs</h2>
+          </div>
+        </div>
+        <div class="cat-grid" id="catGrid"></div>
+      </div>
+    </section>
+
+    <!-- Newest dogs -->
+    <section id="dogs" style="padding-top:20px">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Pet Adoption</div>
+            <h2 class="section-title">Newest Adoptable Dogs</h2>
+          </div>
+          <a class="link-btn" href="adopt.html?type=dog">View all →</a>
+        </div>
+        <div class="cards" id="homeDogs"></div>
+        <div class="section-cta"><span>🐶 DOGS</span><a href="adopt.html?type=dog" id="dogMore">View more dogs & puppies available →</a></div>
+      </div>
+    </section>
+
+    <!-- Newest cats -->
+    <section id="cats" style="padding-top:20px">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Pet Adoption</div>
+            <h2 class="section-title">Newest Adoptable Cats</h2>
+          </div>
+          <a class="link-btn" href="adopt.html?type=cat">View all →</a>
+        </div>
+        <div class="cards" id="homeCats"></div>
+        <div class="section-cta"><span>🐱 CATS</span><a href="adopt.html?type=cat" id="catMore">View more cats & kittens available →</a></div>
+      </div>
+    </section>
+
+    <!-- Marketplace best sellers -->
+    <section class="band-peach">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Pet Marketplace</div>
+            <h2 class="section-title">Best sellers this week</h2>
+            <p class="section-sub">Dog & cat food, toys, beds and accessories from trusted brands. Subscribe to food and save 10% on every delivery.</p>
+          </div>
+          <a class="link-btn" href="shop.html">Shop all →</a>
+        </div>
+        <div class="cards" id="homeProducts"></div>
+      </div>
+    </section>
+
+    <!-- GPS dog belts -->
+    <section>
+      <div class="container split">
+        <div class="visual">
+          <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=1200&q=85" alt="Happy dog outdoors on a trail">
+          <div class="float-card" style="top:22px;left:22px"><span class="pulse"></span><div><b>Koda is at Riverside Park</b>Updated 3 sec ago</div></div>
+          <div class="float-card" style="bottom:22px;right:22px">🔔<div><b>Safe zone alert</b>You'll know the moment they wander</div></div>
+        </div>
+        <div>
+          <div class="section-kicker">GPS Dog Belts</div>
+          <h2 class="section-title">Never lose sight of your best friend</h2>
+          <ul class="feature-list">
+            <li><span class="ico">📍</span><div><b>Live location on your phone</b><span>See exactly where your dog is, updated every few seconds.</span></div></li>
+            <li><span class="ico">🛡️</span><div><b>Safe-zone escape alerts</b><span>Get notified instantly when your dog leaves home or the park.</span></div></li>
+            <li><span class="ico">🔋</span><div><b>Up to 10-day battery</b><span>Waterproof belts, harnesses and clip-on tags for every size.</span></div></li>
+          </ul>
+          <a class="btn" href="shop.html?cat=gps">Shop GPS dog belts</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="band-sage">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Pet Services</div>
+            <h2 class="section-title">Book trusted care near you</h2>
+            <p class="section-sub">Compare local providers, see prices up front and request an appointment in under a minute.</p>
+          </div>
+          <a class="link-btn" href="services.html">All services →</a>
+        </div>
+        <div class="svc-grid">
+          <a class="svc-card" href="services.html?type=vaccination">
+            <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=900&q=80" alt="">
+            <h3>Vaccination</h3><p>Core and lifestyle vaccines, puppy & kitten packages and a clear schedule.</p>
+            <span class="btn light sm" style="width:fit-content">Book a vaccine</span>
+          </a>
+          <a class="svc-card" href="services.html?type=grooming">
+            <img src="https://images.unsplash.com/photo-1611173622933-91942d394b04?auto=format&fit=crop&w=900&q=80" alt="">
+            <h3>Grooming</h3><p>Baths, haircuts, nail trims and de-shedding — in salon or mobile.</p>
+            <span class="btn light sm" style="width:fit-content">Find a groomer</span>
+          </a>
+          <a class="svc-card" href="services.html?type=daycare">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80" alt="">
+            <h3>Dog & Cat Daycare</h3><p>Supervised play, overnight boarding and quiet cat-only suites.</p>
+            <span class="btn light sm" style="width:fit-content">Find daycare</span>
+          </a>
+          <a class="svc-card" href="services.html?type=vet">
+            <img src="https://images.unsplash.com/photo-1644675443401-ea4c14bad0e6?auto=format&fit=crop&w=1000&q=80" alt="">
+            <h3>Veterinary Care</h3><p>Wellness exams, sick visits, dental cleanings and 24/7 emergency hospitals.</p>
+            <span class="btn light sm" style="width:fit-content">Find a vet</span>
+          </a>
+          <a class="svc-card" href="services.html?type=training">
+            <img src="https://images.unsplash.com/photo-1598875184988-5e67b1a874b8?auto=format&fit=crop&w=1000&q=80" alt="">
+            <h3>Training</h3><p>Puppy kindergarten, obedience classes and behavior help from reward-based trainers.</p>
+            <span class="btn light sm" style="width:fit-content">Find a trainer</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breed discovery -->
+    <section id="shelters">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Featured</div>
+            <h2 class="section-title">Discover Your Pawly</h2>
+          </div>
+        </div>
+        <div class="match-grid">
+          <a class="match-card dog" href="breeds.html?type=dog">
+            <h3>Dog Breeds</h3><p>Goldens, Corgis, Huskies and more</p>
+            <span class="btn light sm" style="width:fit-content">Find now</span>
+          </a>
+          <a class="match-card cat" href="breeds.html?type=cat">
+            <h3>Cat Breeds</h3><p>Tabbies, Siamese, Maine Coons and more</p>
+            <span class="btn light sm" style="width:fit-content">Find now</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pet care guides -->
+    <section id="guides" style="padding-top:20px">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Pet Care</div>
+            <h2 class="section-title">Planning to Adopt a Pet?</h2>
+          </div>
+          <a class="link-btn" href="care.html">All guides →</a>
+        </div>
+        <div class="guide-grid" id="homeGuides"></div>
+      </div>
+    </section>
+
+    <!-- Seller CTA -->
+    <section style="padding-top:10px">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>Own a pet business?</h2>
+            <p>Groomers, daycares, vets and pet-product sellers can list on Pawly and reach pet owners nearby. Start free — pay only when you make a sale.</p>
+          </div>
+          <div class="actions">
+            <a class="btn light" href="sell.html#list">List your business</a>
+            <a class="btn peach" href="sell.html#plans">See plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

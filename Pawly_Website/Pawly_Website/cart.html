@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart | Pawly</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="cart">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / Cart</div>
+        <h1>Your Cart</h1>
+        <p id="cartSub">Review your items, set up food subscriptions and check out.</p>
+      </div>
+    </div>
+
+    <div class="container cart-layout" id="cartLayout">
+      <div id="cartItems"></div>
+      <aside class="summary" id="summary" aria-label="Order summary"></aside>
+    </div>
+
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">Recommended</div><h2 class="section-title" style="font-size:32px">You might also like</h2></div></div>
+        <div class="cards" id="recs"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/cart.js"></script>
+</body>
+</html>

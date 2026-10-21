@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sell on Pawly — Business Listings | Pawly</title>
+  <meta name="description" content="List your pet products or services on Pawly and reach pet owners near you." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="sell">
+  <main>
+    <section class="hero" style="padding-bottom:50px">
+      <div class="container hero-grid" style="min-height:0">
+        <div>
+          <div class="eyebrow">🏪 For pet businesses</div>
+          <h1 style="font-size:clamp(40px,5.4vw,66px)">Grow your <span>pet business</span> with Pawly.</h1>
+          <p class="lead">Sellers, groomers, daycares, vets and trainers list on Pawly to reach pet owners who are ready to buy and book. Start free and pay only when you earn.</p>
+          <div class="modal-actions"><a class="btn" href="#list">Create a listing</a><a class="btn ghost" href="#plans">Compare plans</a></div>
+          <div class="hero-stats">
+            <div><b>2 ways</b><span>to earn: products & bookings</span></div>
+            <div><b>$0</b><span>to get started</span></div>
+            <div><b>24 hrs</b><span>typical listing review</span></div>
+          </div>
+        </div>
+        <div class="split" style="grid-template-columns:1fr">
+          <div class="visual">
+            <img src="https://images.unsplash.com/photo-1601758177266-bc599de87707?auto=format&fit=crop&w=1200&q=85" alt="Pet owner relaxing with her dogs and cat">
+            <div class="float-card" style="top:22px;right:22px">📅<div><b>New booking</b>Full groom · Sat 10:00 AM</div></div>
+            <div class="float-card" style="bottom:22px;left:22px">🛍️<div><b>Order received</b>2 × Chicken Training Treats</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-sage">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">How it works</div><h2 class="section-title">From sign-up to first sale</h2></div></div>
+        <div class="steps">
+          <div class="step"><h4>Create a listing</h4><p>Add your product or service, price, photos and location in a few minutes.</p></div>
+          <div class="step"><h4>Get reviewed</h4><p>Our team checks every listing against the seller rules to keep Pawly safe and trusted.</p></div>
+          <div class="step"><h4>Go live</h4><p>Your listing appears in the Shop or Services pages where pet owners search and filter.</p></div>
+          <div class="step"><h4>Get paid</h4><p>Receive orders and booking requests. Payouts are sent weekly minus the plan commission.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">Plans</div><h2 class="section-title">Simple, commission-based pricing</h2>
+          <p class="section-sub">Pick the plan that fits your business. Upgrade, downgrade or cancel at any time.</p></div></div>
+        <div class="plans">
+          <div class="plan">
+            <h3>Starter</h3>
+            <div class="amount">$0 <small>/ month</small></div>
+            <ul><li>Up to 10 listings</li><li>12% commission on product sales</li><li>10% commission on service bookings</li><li>Standard search placement</li><li>Email support</li></ul>
+            <a class="btn ghost" href="#list" data-plan="Starter">Start free</a>
+          </div>
+          <div class="plan featured">
+            <span class="pop">Most popular</span>
+            <h3>Pro</h3>
+            <div class="amount">$29 <small>/ month</small></div>
+            <ul><li>Unlimited listings</li><li>8% commission on product sales</li><li>6% commission on service bookings</li><li>Sales & booking analytics</li><li>Promo codes and discounts</li></ul>
+            <a class="btn" href="#list" data-plan="Pro">Choose Pro</a>
+          </div>
+          <div class="plan">
+            <h3>Featured</h3>
+            <div class="amount">$79 <small>/ month</small></div>
+            <ul><li>Everything in Pro</li><li>5% commission on all sales</li><li>Top placement in search results</li><li>Homepage spotlight rotation</li><li>Verified business badge</li></ul>
+            <a class="btn ghost" href="#list" data-plan="Featured">Get featured</a>
+          </div>
+        </div>
+        <p class="form-note" style="margin-top:14px">Live animals cannot be sold through the Pawly marketplace. Adoptions are handled only by registered shelters and rescues. See the <a href="terms.html#sellers" style="text-decoration:underline">seller terms</a>.</p>
+      </div>
+    </section>
+
+    <section id="list" class="band-peach">
+      <div class="container two-col">
+        <div class="panel">
+          <h3 class="serif" style="font-size:30px;margin-bottom:4px">Create a listing</h3>
+          <p class="muted" style="margin-top:0">Your listing will show up in the Shop or Services pages right away in this prototype.</p>
+          <form id="listingForm" class="form-grid" novalidate>
+            <div class="full">
+              <div class="chips" id="kindChips">
+                <button type="button" class="chip active" data-kind="product">🛍️ Sell a product</button>
+                <button type="button" class="chip" data-kind="service">📍 Offer a service</button>
+              </div>
+            </div>
+            <label class="field"><span>Business name</span><input name="business" required placeholder="e.g. Happy Paws Supply Co."></label>
+            <label class="field"><span>Business email</span><input name="email" type="email" required placeholder="you@business.com"></label>
+            <label class="field"><span>Category</span><select name="category" id="categorySel"></select></label>
+            <label class="field"><span id="priceLbl">Price (USD)</span><input name="price" type="number" min="1" step="0.01" required placeholder="24.99"></label>
+            <label class="field full"><span id="titleLbl">Product name</span><input name="title" required maxlength="80" placeholder="e.g. Organic Peanut Butter Dog Biscuits"></label>
+            <label class="field" id="petField"><span>For</span><select name="pet"><option value="dog">Dogs</option><option value="cat">Cats</option><option value="both">Dogs & cats</option></select></label>
+            <label class="field" id="cityField" hidden><span>City</span><input name="city" placeholder="e.g. Indianapolis"></label>
+            <label class="field" id="stateField" hidden><span>State</span><select name="state"></select></label>
+            <label class="field full" id="modeField" hidden><span>Where do you provide the service?</span><select name="mode">
+              <option value="center">📍 At my location (customers bring their pet)</option>
+              <option value="home">🚐 At the customer's home (mobile / in-home)</option>
+              <option value="both">Both</option></select></label>
+            <label class="field"><span>Plan</span><select name="plan" id="planSel"><option>Starter</option><option>Pro</option><option>Featured</option></select></label>
+            <label class="field full"><span>Image URL (optional)</span><input name="image" type="url" placeholder="https://… — leave blank to use a stock photo"></label>
+            <label class="field full"><span>Description</span><textarea name="description" required maxlength="400" placeholder="What makes it great? Sizes, ingredients, what's included…"></textarea></label>
+            <label class="check full"><input type="checkbox" name="terms" required> I agree to the <a href="terms.html#sellers" target="_blank">Seller Terms</a> and confirm this listing does not include the sale of live animals.</label>
+            <div class="error-text full" id="listErr"></div>
+            <div class="full"><button class="btn" type="submit">Publish listing</button></div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Your listings</h3>
+          <div id="myListings"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" style="max-width:860px">
+        <div class="section-head"><div><div class="section-kicker">Seller FAQ</div><h2 class="section-title">Questions from businesses</h2></div></div>
+        <details class="faq"><summary>Who can sell on Pawly?</summary><p>Registered businesses and independent makers selling pet food, supplies and accessories, plus licensed service providers such as groomers, daycares, trainers and veterinary clinics.</p></details>
+        <details class="faq"><summary>How and when do I get paid?</summary><p>Payouts are sent weekly to your bank account for completed orders and appointments, minus the commission for your plan.</p></details>
+        <details class="faq"><summary>Can I sell or rehome animals?</summary><p>No. Pawly does not allow the sale of live animals. Adoption listings come only from our partner shelters and rescue organizations.</p></details>
+        <details class="faq"><summary>Do I need insurance or a license?</summary><p>Service providers must hold any licenses required in their state (for example, veterinary licensing) and should carry appropriate business insurance.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/sell.js"></script>
+</body>
+</html>

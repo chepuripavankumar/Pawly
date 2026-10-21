@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorites & Bookings | Pawly</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="favorites">
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">Home</a> / My Pawly</div>
+        <h1>My Favorites & Bookings</h1>
+        <p>Pets you've saved, products on your wish list, providers you like — plus your appointments, adoption applications and orders.</p>
+        <div class="chips" id="favTabs" style="margin-top:20px">
+          <button class="chip active" data-tab="pet">🐾 Pets <span data-c="pet"></span></button>
+          <button class="chip" data-tab="product">🛍️ Products <span data-c="product"></span></button>
+          <button class="chip" data-tab="provider">📍 Services <span data-c="provider"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <section style="padding-top:30px">
+      <div class="container">
+        <div class="cards" id="favGrid"></div>
+      </div>
+    </section>
+
+    <section id="bookings" style="padding-top:10px">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">Services</div><h2 class="section-title" style="font-size:32px">My appointments</h2></div></div>
+        <div class="row-list" id="bookingList"></div>
+      </div>
+    </section>
+
+    <section id="applications" style="padding-top:10px">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">Adoption</div><h2 class="section-title" style="font-size:32px">My adoption applications</h2></div></div>
+        <div class="row-list" id="appList"></div>
+      </div>
+    </section>
+
+    <section id="orders" style="padding-top:10px">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">Shop</div><h2 class="section-title" style="font-size:32px">My orders</h2></div></div>
+        <div class="row-list" id="orderList"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      let tab = "pet";
+      const EMPTY = {
+        pet: ["🐶", "No saved pets yet", "Tap the heart on any pet to keep them here while you decide.", "adopt.html", "Browse pets"],
+        product: ["🛍️", "Your wish list is empty", "Save products to compare them or buy later.", "shop.html", "Go to the shop"],
+        provider: ["📍", "No saved providers", "Save groomers, daycares and vets you'd like to book again.", "services.html", "Find services"]
+      };
+
+      function renderFavs() {
+        const keys = favs.all();
+        const byType = t => keys.filter(k => k.startsWith(t + ":")).map(k => k.slice(t.length + 1));
+        ["pet", "product", "provider"].forEach(t => { $(`[data-c="${t}"]`).textContent = `(${byType(t).length})`; });
+        $$("#favTabs .chip").forEach(c => c.classList.toggle("active", c.dataset.tab === tab));
+        const ids = byType(tab);
+        let html = "";
+        if (tab === "pet") html = ids.map(findPet).filter(Boolean).map(petCard).join("");
+        if (tab === "product") html = ids.map(findProduct).filter(Boolean).map(productCard).join("");
+        if (tab === "provider") html = ids.map(findProvider).filter(Boolean).map(providerCard).join("");
+        $("#favGrid").innerHTML = html || `<div style="grid-column:1/-1">${emptyState(...EMPTY[tab])}</div>`;
+      }
+
+      function renderBookings() {
+        const list = store.get("bookings", []);
+        $("#bookingList").innerHTML = list.length ? list.map(b => {
+          const p = findProvider(b.providerId);
+          const past = b.date < todayISO();
+          return `<div class="row-item"><img src="${img(p ? p.img : "", 200)}" alt="">
+            <div><b>${esc(b.service)} · ${esc(b.pet)}</b><span class="muted">${esc(b.provider)} — ${prettyDate(b.date)} at ${esc(b.time)} · ${money(b.price).replace(".00", "")} · ${b.mode === "home" ? "🚐 At your home" : "📍 At the provider"}</span></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+              <span class="status ${past ? "" : "pending"}">${past ? "Completed" : "Awaiting confirmation"}</span>
+              ${past ? "" : `<button class="remove" data-cancel="${b.id}">Cancel</button>`}
+            </div></div>`;
+        }).join("") : emptyState("📅", "No appointments yet", "Book vaccination, grooming or daycare in a few taps.", "services.html", "Book a service");
+      }
+
+      function renderApps() {
+        const list = store.get("applications", []);
+        $("#appList").innerHTML = list.length ? list.map(a => {
+          const p = findPet(a.petId);
+          return `<div class="row-item"><img src="${img(p ? p.img : "", 200)}" alt="">
+            <div><b>${esc(a.petName)}</b><span class="muted">Sent to ${esc(a.shelter)} on ${new Date(a.created).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span></div>
+            <span class="status pending">Under review</span></div>`;
+        }).join("") : emptyState("🏡", "No applications yet", "Found a pet you love? Apply from their profile.", "adopt.html", "Find a pet");
+      }
+
+      function renderOrders() {
+        const list = store.get("orders", []);
+        $("#orderList").innerHTML = list.length ? list.map(o => {
+          const first = findProduct(o.items[0] && o.items[0].id);
+          const n = o.items.reduce((s, i) => s + i.qty, 0);
+          return `<div class="row-item"><img src="${img(first ? first.img : "", 200)}" alt="">
+            <div><b>Order ${esc(o.id)}</b><span class="muted">${n} item${n === 1 ? "" : "s"} · ${money(o.total)} · ${new Date(o.created).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span></div>
+            <span class="status">Processing</span></div>`;
+        }).join("") : emptyState("📦", "No orders yet", "Your orders will appear here after checkout.", "shop.html", "Shop now");
+      }
+
+      $("#favTabs").addEventListener("click", e => { const c = e.target.closest(".chip"); if (c) { tab = c.dataset.tab; renderFavs(); } });
+      $("#bookingList").addEventListener("click", e => {
+        const b = e.target.closest("[data-cancel]"); if (!b) return;
+        store.set("bookings", store.get("bookings", []).filter(x => x.id !== b.dataset.cancel));
+        renderBookings(); toast("Appointment cancelled");
+      });
+      document.addEventListener("pawly:favs", renderFavs);
+      document.addEventListener("pawly:bookings", renderBookings);
+      document.addEventListener("pawly:applications", renderApps);
+
+      renderFavs(); renderBookings(); renderApps(); renderOrders();
+      if (location.hash) { const el = $(location.hash); if (el) el.scrollIntoView(); }
+    })();
+  </script>
+</body>
+</html>
